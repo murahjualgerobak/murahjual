@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator Sederhana</title>
+  <style>
+    /* Gaya CSS */
+    .calculator {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 24px;
+      text-align: right;
+    }
+
+    .buttons button {
+      width: 23%;
+      height: 50px;
+      margin: 5px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>/</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>*</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>-</button>
+      <button>0</button>
+      <button>.</button>
+      <button>C</button>
+      <button>=</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('button');
+
+    let currentInput = '';
+
+    buttons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const value = event.target.textContent;
+
+        if (value === '=') {
+          currentInput = eval(currentInput);
+          display.value = currentInput;
+        } else if (value === 'C') {
+          currentInput = '';
+          display.value = '';
+        } else {
+          currentInput += value;
+          display.value = currentInput;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
